@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: service-autoscaler-cpu
+metadata:
+  annotations:
+    description: Service Auto Scale based on CPU
+  name: service-autoscaler-cpu
+objects:
+- apiVersion: extensions/v1beta1
+  kind: HorizontalPodAutoscaler
+  metadata:
+    name: ${APP_NAME} 
+  spec:
+    scaleRef:
+      kind: DeploymentConfig 
+      name: ${APP_NAME} 
+      apiVersion: v1 
+      subresource: scale
+    minReplicas: ${{REPLICAS_MIN}}
+    maxReplicas: ${{REPLICAS_MAX}} 
+    cpuUtilization:
+      targetPercentage: ${{CPU_THRESHOLD}}
+
+parameters:
+- description: The application name.
+  displayName: Application Name
+  name: APP_NAME
+  value: app
+- description: Minimum replicas.
+  displayName: Minimum replicas
+  name: REPLICAS_MIN
+  value: "1"
+- description: Maximun replicas.
+  displayName: Maximum replicas
+  name: REPLICAS_MAX
+  value: "1"
+- description: CPU threshold to replicate (%).
+  displayName: CPU threshold to replicate (%)
+  name: CPU_THRESHOLD
+  value: "80"

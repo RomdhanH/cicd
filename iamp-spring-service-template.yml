@@ -1,0 +1,176 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: iamp-spring-service
+metadata:
+  annotations:
+    description: IAMP Spring Service
+  name: iamp-spring-service
+objects:
+- apiVersion: v1
+  kind: Route
+  labels:
+    app: ${APP_NAME}
+  metadata:
+    name: ${APP_NAME}
+  spec:
+    port:
+      targetPort: http
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
+    to:
+      kind: Service
+      name: ${APP_NAME}
+      
+- apiVersion: v1
+  kind: Route
+  labels:
+    app: ${APP_NAME}
+  metadata:
+    name: ${APP_NAME}-mgmt
+  spec:
+    port:
+      targetPort: mgmt
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
+    to:
+      kind: Service
+      name: ${APP_NAME}
+    path: /actuator
+      
+- apiVersion: v1
+  kind: Service
+  labels:
+    app: ${APP_NAME}
+  metadata:
+    name: ${APP_NAME}
+  spec:
+    ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: mgmt
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+    selector:
+      name: ${APP_NAME}
+    sessionAffinity: None
+    type: ClusterIP
+
+- apiVersion: v1
+  kind: DeploymentConfig
+  labels:
+    app: ${APP_NAME}
+  metadata:
+    name: ${APP_NAME}
+  spec:
+    replicas: ${{REPLICAS}}
+    selector:
+      name: ${APP_NAME}
+    strategy:
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          name: ${APP_NAME}
+      spec:
+        containers:
+        - env:
+           - name: JAVA_OPTIONS
+             value: "${JAVA_OPTIONS}"
+          capabilities: {}
+          name: ${APP_NAME}
+          image: ${IMAGE_NAME}:${IMAGE_TAG}
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
+            name: "http"
+            protocol: "TCP"
+          - containerPort: 8081
+            name: "mgmt"
+            protocol: "TCP"
+          livenessProbe:
+            httpGet:
+              path: "/actuator/health"
+              port: 8081
+            initialDelaySeconds: 180
+          readinessProbe:
+            httpGet:
+              path: "/actuator/health"
+              port: 8081
+            initialDelaySeconds: 10
+          resources:
+            requests:
+              cpu: ${CPU_REQUEST}
+              memory: ${MEMORY_REQUEST}
+            limits:
+              cpu: ${CPU_LIMIT}
+              memory: ${MEMORY_LIMIT}
+          volumeMounts:
+          - mountPath: /deployments/config
+            name: iamp-service-config
+          - mountPath: /sftp
+            name: sftp
+          
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        volumes:
+        - name: iamp-service-config
+          configMap:
+            name: iamp-service-config
+        - emptyDir: {}
+          name: sftp
+        
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${APP_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${IMAGE_NAME}:${IMAGE_TAG}
+      type: ImageChange
+    - type: ConfigChange
+
+
+parameters:
+- description: The application name.
+  displayName: Application Name
+  name: APP_NAME
+  value: app
+- description: replicas.
+  displayName: Replicas
+  name: REPLICAS
+  value: "1"
+- description: Minimum amount of memory to reserve for the container.
+  displayName: Memory Request
+  name: MEMORY_REQUEST
+  value: 100Mi
+- description: Maximum amount of memory the container can use.
+  displayName: Memory Limit
+  name: MEMORY_LIMIT
+  value: 500Mi
+- description: Minimum amount of CPU to reserve for the container.
+  displayName: CPU Request
+  name: CPU_REQUEST
+  value: 100m
+- description: Maximum amount of CPU the container can use.
+  displayName: CPU Limit
+  name: CPU_LIMIT
+  value: 500m
+- description: JVM Options.
+  displayName: JVM Options
+  name: JAVA_OPTIONS
+  value: "-XshowSettings:vm -Xms100m -Xmx350m"
+- description: Image name.
+  displayName: Image name
+  name: IMAGE_NAME
+  value: app
+- description: Image tag.
+  displayName: Image tag
+  name: IMAGE_TAG
+  value: latest
