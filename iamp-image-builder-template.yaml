@@ -48,7 +48,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: ${APP_NAME}:latest
+        name: ${APP_NAME}
     source:
       binary: {}
       type: Binary
