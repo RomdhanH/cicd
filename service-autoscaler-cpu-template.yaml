@@ -7,22 +7,24 @@ metadata:
     description: Service Auto Scale based on CPU
   name: service-autoscaler-cpu
 objects:
-- apiVersion: extensions/v1beta1
+- apiVersion: autoscaling/v2beta1
   kind: HorizontalPodAutoscaler
   labels:
     app: ${APP_NAME}
   metadata:
     name: ${APP_NAME} 
   spec:
-    scaleRef:
+    scaleTargetRef:
       kind: DeploymentConfig 
       name: ${APP_NAME} 
-      apiVersion: v1 
-      subresource: scale
+      apiVersion: apps/v1
     minReplicas: ${{REPLICAS_MIN}}
-    maxReplicas: ${{REPLICAS_MAX}} 
-    cpuUtilization:
-      targetPercentage: ${{CPU_THRESHOLD}}
+    maxReplicas: ${{REPLICAS_MAX}}
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: ${{CPU_THRESHOLD}}
 
 parameters:
 - description: The application name.
