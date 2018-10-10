@@ -125,16 +125,6 @@ objects:
         - emptyDir: {}
           name: sftp
 
-    triggers:
-    - imageChangeParams:
-        automatic: false
-        containerNames:
-        - ${APP_NAME}
-        from:
-          kind: ImageStreamTag
-          name: ${APP_NAME}:${IMAGE_TAG}
-      type: ImageChange
-
 parameters:
 - description: The application name.
   displayName: Application Name
