@@ -61,6 +61,6 @@ objects:
 
 parameters:
 - description: The application name.
-  displayName: Application Name
+  displayName: Application Name 
   name: APP_NAME
   value: app
