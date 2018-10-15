@@ -78,9 +78,9 @@ objects:
      ## =========================================================
      ##              Endpoints
      ## =========================================================
-     endpoint.vph=http://rsi-vph:8080 
-     endpoint.icbc.adapter=http://rsi-icbc-adapter:8080 
-     endpoint.icbc=http://rsi-icbc:8080/icbc/v1/ws/createContravention 
+     endpoint.vph=http://rsi-vph:8080
+     endpoint.icbc.adapter=http://rsi-icbc-adapter:8080
+     endpoint.icbc=http://rsi-icbc:8080/icbc/v1/ws/createContravention
         
      ## =========================================================
      ##              Logging
