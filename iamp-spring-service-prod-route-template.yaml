@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: iamp-spring-service-prod-route
+metadata:
+  annotations:
+    description: IAMP Spring Service Prod route
+  name: iamp-spring-service-prod-route
+objects:
+- apiVersion: v1
+  kind: Route
+  labels:
+    app: ${APP_NAME}-${API_VERSION}
+  metadata:
+    name: ${APP_NAME}-${API_VERSION}
+  spec:
+    port:
+      targetPort: http
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
+    to:
+      kind: Service
+      name: ${APP_NAME}-${API_VERSION}
+parameters:
+- description: The application name.
+  displayName: Application Name
+  name: APP_NAME
+  value: app
