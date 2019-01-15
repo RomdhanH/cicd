@@ -26,6 +26,7 @@ parameters:
 - description: The application name.
   displayName: Application Name
   name: APP_NAME
+  value: app
 - description: The API Version.
   displayName: API Version
   name: API_VERSION
