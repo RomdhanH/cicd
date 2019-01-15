@@ -76,7 +76,7 @@ objects:
     template:
       metadata:
         labels:
-          name: ${APP_NAME}-${API_VERSION}
+          name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
       spec:
         containers:
         - env:
