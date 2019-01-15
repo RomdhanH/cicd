@@ -12,7 +12,7 @@ objects:
   labels:
     app: ${APP_NAME}-V2
   metadata:
-    name:  ${APP_NAME}-V2-'${version}'
+    name:  ${APP_NAME}-V2- ${version}
   spec:
     port:
       targetPort: http
