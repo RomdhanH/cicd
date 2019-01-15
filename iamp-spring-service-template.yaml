@@ -12,7 +12,7 @@ objects:
   labels:
     app: ${APP_NAME}-V2
   metadata:
-    name:  ${APP_NAME}-V2- ${version}
+    name:  ${APP_NAME}-V2-2.0
   spec:
     port:
       targetPort: http
@@ -21,14 +21,14 @@ objects:
       insecureEdgeTerminationPolicy: Redirect
     to:
       kind: Service
-      name: ${APP_NAME}-V2-'${version}'
+      name: ${APP_NAME}-V2-2.0
       
 - apiVersion: v1
   kind: Route
   labels:
     app: ${APP_NAME}-V2
   metadata:
-    name: ${APP_NAME}-V2-'${version}'-mgmt
+    name: ${APP_NAME}-V2-2.0-mgmt
   spec:
     port:
       targetPort: mgmt
@@ -37,7 +37,7 @@ objects:
       insecureEdgeTerminationPolicy: Redirect
     to:
       kind: Service
-      name: ${APP_NAME}-V2-'${version}'
+      name: ${APP_NAME}-V2-2.0
     path: /actuator
       
 - apiVersion: v1
@@ -45,7 +45,7 @@ objects:
   labels:
     app: ${APP_NAME}-V2
   metadata:
-    name: ${APP_NAME}-V2-'${version}'
+    name: ${APP_NAME}-V2-2.0
   spec:
     ports:
     - name: http
@@ -57,7 +57,7 @@ objects:
       protocol: TCP
       targetPort: 8081
     selector:
-      name: ${APP_NAME}-V2-'${version}'
+      name: ${APP_NAME}-V2-2.0
     sessionAffinity: None
     type: ClusterIP
 
@@ -66,11 +66,11 @@ objects:
   labels:
     app: ${APP_NAME}-V2
   metadata:
-    name: ${APP_NAME}-V2-'${version}'
+    name: ${APP_NAME}-V2-2.0
   spec:
     replicas: ${{REPLICAS}}
     selector:
-      name: ${APP_NAME}-V2-'${version}'
+      name: ${APP_NAME}-V2-2.0
     strategy:
       type: Rolling
     template:
@@ -83,7 +83,7 @@ objects:
            - name: JAVA_OPTIONS
              value: "${JAVA_OPTIONS}"
           capabilities: {}
-          name: ${APP_NAME}-V2-'${version}'
+          name: ${APP_NAME}-V2-2.0
           image: ${IMAGE_NAME}:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           ports:
@@ -129,7 +129,7 @@ objects:
     - imageChangeParams:
         automatic: false
         containerNames:
-        - ${APP_NAME}-V2-'${version}'
+        - ${APP_NAME}-V2-2.0
         from:
           kind: ImageStreamTag
           name: ${APP_NAME}:${IMAGE_TAG}
