@@ -132,7 +132,7 @@ objects:
         - ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
         from:
           kind: ImageStreamTag
-          name: ${APP_NAME}:${IMAGE_TAG}
+          name: ${IMAGE_NAME}:${IMAGE_TAG}
       type: ImageChange
 
 parameters:
