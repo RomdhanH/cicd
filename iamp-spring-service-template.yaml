@@ -10,7 +10,7 @@ objects:
 - apiVersion: v1
   kind: Route
   labels:
-    app: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
+    app: ${APP_NAME}-${API_VERSION}
   metadata:
     name:  ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
   spec:
@@ -140,6 +140,13 @@ parameters:
   displayName: Application Name
   name: APP_NAME
   value: app
+- description: The API Version.
+  displayName: API Version
+  name: API_VERSION
+  value: v1
+- description: The Build Version.
+  displayName: Build Version
+  name: BUILD_VERSION
 - description: replicas.
   displayName: Replicas
   name: REPLICAS
