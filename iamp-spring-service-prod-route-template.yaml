@@ -30,4 +30,4 @@ parameters:
 - description: The API Version.
   displayName: API Version
   name: API_VERSION
-  value: V1
+  value: v1
