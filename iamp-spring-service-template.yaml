@@ -10,9 +10,9 @@ objects:
 - apiVersion: v1
   kind: Route
   labels:
-    app: ${APP_NAME}-V2
+    app: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
   metadata:
-    name:  ${APP_NAME}-V2-2.0
+    name:  ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
   spec:
     port:
       targetPort: http
@@ -21,14 +21,14 @@ objects:
       insecureEdgeTerminationPolicy: Redirect
     to:
       kind: Service
-      name: ${APP_NAME}-V2-2.0
+      name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
       
 - apiVersion: v1
   kind: Route
   labels:
-    app: ${APP_NAME}-V2
+    app: ${APP_NAME}-${API_VERSION}
   metadata:
-    name: ${APP_NAME}-V2-2.0-mgmt
+    name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}-mgmt
   spec:
     port:
       targetPort: mgmt
@@ -37,15 +37,15 @@ objects:
       insecureEdgeTerminationPolicy: Redirect
     to:
       kind: Service
-      name: ${APP_NAME}-V2-2.0
+      name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
     path: /actuator
       
 - apiVersion: v1
   kind: Service
   labels:
-    app: ${APP_NAME}-V2
+    app: ${APP_NAME}-${API_VERSION}
   metadata:
-    name: ${APP_NAME}-V2-2.0
+    name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
   spec:
     ports:
     - name: http
@@ -57,33 +57,33 @@ objects:
       protocol: TCP
       targetPort: 8081
     selector:
-      name: ${APP_NAME}-V2-2.0
+      name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
     sessionAffinity: None
     type: ClusterIP
 
 - apiVersion: v1
   kind: DeploymentConfig
   labels:
-    app: ${APP_NAME}-V2
+    app: ${APP_NAME}-${API_VERSION}
   metadata:
-    name: ${APP_NAME}-V2-2.0
+    name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
   spec:
     replicas: ${{REPLICAS}}
     selector:
-      name: ${APP_NAME}-V2-2.0
+      name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
     strategy:
       type: Rolling
     template:
       metadata:
         labels:
-          name: ${APP_NAME}-V2
+          name: ${APP_NAME}-${API_VERSION}
       spec:
         containers:
         - env:
            - name: JAVA_OPTIONS
              value: "${JAVA_OPTIONS}"
           capabilities: {}
-          name: ${APP_NAME}-V2-2.0
+          name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
           image: ${IMAGE_NAME}:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           ports:
@@ -129,7 +129,7 @@ objects:
     - imageChangeParams:
         automatic: false
         containerNames:
-        - ${APP_NAME}-V2-2.0
+        - ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
         from:
           kind: ImageStreamTag
           name: ${APP_NAME}:${IMAGE_TAG}
