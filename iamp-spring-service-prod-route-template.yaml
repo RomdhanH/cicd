@@ -10,9 +10,9 @@ objects:
 - apiVersion: v1
   kind: Route
   labels:
-    app: ${APP_NAME}-${API_VERSION}
+    app: ${APP_NAME}-V2
   metadata:
-    name: ${APP_NAME}-${API_VERSION}
+    name: ${APP_NAME}-V2
   spec:
     port:
       targetPort: http
@@ -21,7 +21,7 @@ objects:
       insecureEdgeTerminationPolicy: Redirect
     to:
       kind: Service
-      name: ${APP_NAME}-${API_VERSION}
+      name: ${APP_NAME}-V2
 parameters:
 - description: The application name.
   displayName: Application Name
