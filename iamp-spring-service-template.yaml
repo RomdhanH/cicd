@@ -143,7 +143,6 @@ parameters:
 - description: The API Version.
   displayName: API Version
   name: API_VERSION
-  value: v1
 - description: The Build Version.
   displayName: Build Version
   name: BUILD_VERSION
