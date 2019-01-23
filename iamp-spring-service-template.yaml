@@ -82,6 +82,11 @@ objects:
         - env:
            - name: JAVA_OPTIONS
              value: "${JAVA_OPTIONS}"
+           - name: CLOUD_CONFIG_GIT_URI
+             valueFrom:
+              configMapKeyRef:
+                name: iamp-service-config
+                key: cloud.config.git.uri
           capabilities: {}
           name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
           image: ${IMAGE_NAME}:${IMAGE_TAG}
