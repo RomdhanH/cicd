@@ -12,7 +12,6 @@ objects:
   metadata:
     name: iamp-service-config
   data:
-    cloud.config.git.uri: https://github.com/HoussemRomdhane/config-repository.git
     application.properties: |-
      ## =========================================================
      ##              DEV
@@ -28,7 +27,15 @@ objects:
      ## Tomcat-specific server settings.
      server.tomcat.accept-count=10
      server.tomcat.max-connections=10
-     server.tomcat.max-threads=5
+     server.tomcat.max-threads=5 
+     
+     ## =========================================================
+     ##              Spring Cloud config
+     ## =========================================================
+     cloud.config.git.uri=https://github.com/HoussemRomdhane/config-repository.git
+     
+     
+     
      
      ## =========================================================
      ##              Management / Actuator
