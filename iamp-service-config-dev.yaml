@@ -12,6 +12,7 @@ objects:
   metadata:
     name: iamp-service-config
   data:
+    cloud.config.git.uri: https://github.com/HoussemRomdhane/config-repository.git
     application.properties: |-
      ## =========================================================
      ##              DEV
