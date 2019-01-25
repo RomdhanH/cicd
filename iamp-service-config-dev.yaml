@@ -32,7 +32,7 @@ objects:
      ## =========================================================
      ##              Spring Cloud config
      ## =========================================================
-     spring.cloud.config.server.git.uri=https://github.com/HoussemRomdhane/config-repository.git
+     spring.cloud.config.server.git.uri=https://github.com/RomdhanH/config-repository.git
      
      
      
