@@ -34,7 +34,7 @@ objects:
      ## =========================================================
      spring.cloud.config.server.git.uri=git@github.com:RomdhanH/config-repository.git
      spring.cloud.config.server.ignoreLocalSshSettings=true
-     spring.cloud.config.server.hostKey=4096 SHA256:furlQ0fWyY3ysoo3uoCw4BQ9s+V/gQwv//Z5QkInZbc houseem.romdhane@gov.bc.ca (RSA)
+     spring.cloud.config.server.hostKey=SHA256:furlQ0fWyY3ysoo3uoCw4BQ9s+V/gQwv//Z5QkInZbc houseem.romdhane@gov.bc.ca (RSA)
      spring.cloud.config.server.hostKeyAlgorithm=ssh-rsa
      spring.cloud.config.server.privateKey= |
                                             -----BEGIN OPENSSH PRIVATE KEY-----
