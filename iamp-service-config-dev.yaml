@@ -113,6 +113,5 @@ objects:
              <appender-ref ref="STDOUT" />
          </root>
      </configuration>
-     bootstrap.properties: |-
-    	spring.cloud.config.uri = http://config-server-v1-1-0-0-snapshot:8080/config-server/v1
-     
+    bootstrap.properties: |-
+     spring.cloud.config.uri = http://config-server-v1-1-0-0-snapshot:8080/config-server/v1
