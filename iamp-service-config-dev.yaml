@@ -32,7 +32,61 @@ objects:
      ## =========================================================
      ##              Spring Cloud config
      ## =========================================================
-     spring.cloud.config.server.git.uri=https://github.com/RomdhanH/config-repository.git
+     spring.cloud.config.server.git.uri=git@github.com:RomdhanH/config-repository.git
+     spring.cloud.config.server.ignoreLocalSshSettings=true
+     spring.cloud.config.server.hostKey=4096 SHA256:furlQ0fWyY3ysoo3uoCw4BQ9s+V/gQwv//Z5QkInZbc houseem.romdhane@gov.bc.ca (RSA)
+     spring.cloud.config.server.hostKeyAlgorithm=ssh-rsa
+     spring.cloud.config.server.privateKey= |
+                                            -----BEGIN OPENSSH PRIVATE KEY-----
+                                            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
+                                            NhAAAAAwEAAQAAAgEApK0Y4+DJMcWEeJ9QafFHcIcFMR887ABrJC13aBlbY3m0AIV9jkhX
+                                            JZciASkoo4WPH/cJQZWeg9+2iv2pA5Rhi1WzIG9Zx2801iw9/e9og8B4M+Z1Lnca4gfbF/
+                                            xoG5cRI6pWnlxwjwKQc6GsGwR+gH9C0yNMCIPqdGp245rQ3q0ajGeQe3XJxpC3+8gOBDin
+                                            IWioJWQtNzctWfx3beoVsyQaQ++Zb0GuqRcAbN3rauTsFFnqNyrpjHnSWfw4CbWsepd5LD
+                                            CzRTrPPpgpH77hKdgroX2hJDZiyPpYTyhki+mHmdbGTPHyMvPWfIR0eaj8bvM2L/QVzlGl
+                                            799DF4UtIuBLYjZQKT6a9c8dTtDkKYH1ippUwQTS1aegVx1Q5ete4xEOF8ToFkV1AswSiB
+                                            JuYIkpYVzoL+zo/y5G/xto0tzXhnbgxMbmBXuo52AlCk+BZgbUDOX34TnHsCcFDHQWMNh0
+                                            E0ftmvgbpOlDsJQ4QXfiUZUv2xk3/xPSHOP4OvyrKQcdxMVrbp/SZ6IOm12dRL2RRn8r2C
+                                            FNM0tD+jYFyVK+8lb1WvrRxonbbA2deer5mVldpXBIGkK1OrZsE6swbthJUM/2yqgc1I88
+                                            i2ASInin0/MQMg6YT09ZiOX+52JLVnaKNIkI7u+fBXug1ljGxOYZszoorfGJZSimfZsq+M
+                                            8AAAdQsKcUMrCnFDIAAAAHc3NoLXJzYQAAAgEApK0Y4+DJMcWEeJ9QafFHcIcFMR887ABr
+                                            JC13aBlbY3m0AIV9jkhXJZciASkoo4WPH/cJQZWeg9+2iv2pA5Rhi1WzIG9Zx2801iw9/e
+                                            9og8B4M+Z1Lnca4gfbF/xoG5cRI6pWnlxwjwKQc6GsGwR+gH9C0yNMCIPqdGp245rQ3q0a
+                                            jGeQe3XJxpC3+8gOBDinIWioJWQtNzctWfx3beoVsyQaQ++Zb0GuqRcAbN3rauTsFFnqNy
+                                            rpjHnSWfw4CbWsepd5LDCzRTrPPpgpH77hKdgroX2hJDZiyPpYTyhki+mHmdbGTPHyMvPW
+                                            fIR0eaj8bvM2L/QVzlGl799DF4UtIuBLYjZQKT6a9c8dTtDkKYH1ippUwQTS1aegVx1Q5e
+                                            te4xEOF8ToFkV1AswSiBJuYIkpYVzoL+zo/y5G/xto0tzXhnbgxMbmBXuo52AlCk+BZgbU
+                                            DOX34TnHsCcFDHQWMNh0E0ftmvgbpOlDsJQ4QXfiUZUv2xk3/xPSHOP4OvyrKQcdxMVrbp
+                                            /SZ6IOm12dRL2RRn8r2CFNM0tD+jYFyVK+8lb1WvrRxonbbA2deer5mVldpXBIGkK1OrZs
+                                            E6swbthJUM/2yqgc1I88i2ASInin0/MQMg6YT09ZiOX+52JLVnaKNIkI7u+fBXug1ljGxO
+                                            YZszoorfGJZSimfZsq+M8AAAADAQABAAACAHbjCP8rf9VQ9exniBSUPrE8qUDnfoIbYz6B
+                                            HJ2pANN2P7/In/aiv1fCHqib4Fz9xXCcVrBkpkYqsozxyJ1u+GUxf9rAyR40aP7effrgZq
+                                            IHyEAf9yWOk3fvl/tfHIIetB79kP9PWWvFvCfe5nOy8Okv9zybVP8ozZEyc5aqZHT+oBYR
+                                            hru7M+sI++roaUYe6Ho0JoCoLASa70DyBf7yaqwkOlollq49yy0EECiIprdLgizHJVKixm
+                                            3GXVjdwE8yO81dofuHRUWLyac1Dyt+EOy2xfkWy8lrAjJ6mlq7nKtt85na9tsCKYsjgwvu
+                                            THCw0V4AdHR2UW/cfmII21UVrplAfndikoh3WWxS5I6qI5NF69Mzz79mbN03WRy+M4Vh2u
+                                            zuzNC/nMkJgKKBLChRcYSj9GgDT8Xfx5pfbmYjcC5OHF2TF1PKNiJp1+hI8GALsOm+BCBC
+                                            qx8IgruHZD55khGn9XHpGL4dtd2kzdR77pVVGMB09ayOSmPWz0X13ygciocvBUwYn2Dilh
+                                            PNVbdcawpuiG0AZnAtws6VK6WNtcYC4PkTD7QOQvfwSfHX4ZBIBeJvfOxbg46rgqI/iN3c
+                                            8RMsl8EOvD3LkLKAvw68E3XRyFZ8g+Ed18ztbX0gW0WwR11h02yRtqTnZC4ojbvGwJG0XA
+                                            P5yuNxYvDjtLAD03qxAAABAQC+m1Isuf7rd+1UDBhw/NY0JzBz+We+peFTGBcAvf/pZiLe
+                                            uy/DBr1O3HZXhtW5lfTndR53KYctV+q8Fi0UfLKTfJz1It2NprgOSRj58QdhLvJFc1nVnQ
+                                            877fJzXt1/2GXc0vUYkE+l2SGZVF5uErlXqxeATVhjT/Pqfcqu7XQQ37AfSZnykJ2i4jhS
+                                            lW9k602HdTuDTv7QKclTboif3fwkLqCwe+dBIrX6dD7zyguUCg4UVp3mlbLM5tUIxwcC3Q
+                                            s2HluVdCN7Lh9uycRqABsR1WSlbEoErkpBGQ9QmSGv9Gtg+z8HpTvCE9YNOi12IGcf6dR2
+                                            fMZ/c1sC6Up97h8tAAABAQDWJBi/0FfS0x9Tc63Gfw6mkVUvun8WaffCx2Spzu2X7TIKYQ
+                                            ClpNmaW5rTQkAyRQ95VNPUJThMuyOZCaKrdYdHFTPYO0OMC0ywll9XujX7h54XhsdzFUoH
+                                            9KXDpopByreIKJv0cSmBxQD3oxC01YqzGk9A5lCQ7oBKnHMNm6+1llmo1lZqsq2V0x9Cqr
+                                            Ut5Tr6ANSQiUzbrR6CjhMrUaNsN6Uc8QrYfrZKLqAfe6yr+vvWJDnUx6gWgpjLixjVpayS
+                                            MQbSITW52bcBhUqEqcmFfAsGTqY7KHWBnbWIaXnNXaseNekn2y6xyGHLF7Rmwt9kKmL4Up
+                                            mjZCuGJRYDz2m9AAABAQDE3bak92ulqhpEH3F0mtuLTsa/rLZQTEHT439TrkZXGZzNcYsE
+                                            Ithit5peLF96pcAlQvwQkgFVuG9MmlGNS8sc2UxQVqqtlRrbLwBnmRtb2/iofOIzvv11Rm
+                                            KELj8Hjvh8VORm8HZ94YkadYmwr5IpcNW/OQ1UcqXmCBc2i9KPMOzhZfwESKidkrtfvTbv
+                                            MzOqmEV5RRlKOBNbEVPzeVXuzS+eiu9euTn60c4Hza0IgiKYus/Mt7LbUq/Bzk4z4JJC61
+                                            FIT3hilrW0UV+YJCbtUNt1Bubr2w2va8F1BUFeRmfuvcSKL1lifAChRHKosusIQCWfSNUu
+                                            2RtBfqAFiwd7AAAAGmhvdXNlZW0ucm9tZGhhbmVAZ292LmJjLmNh
+                                            -----END OPENSSH PRIVATE KEY-----
+
      
      
      
