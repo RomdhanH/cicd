@@ -20,14 +20,14 @@ objects:
      ## =========================================================
      server.address=0.0.0.0
      server.port=8080
-     server.servlet.application-display-name=${project.artifactId}
-     server.servlet.path=/
-     server.servlet.context-path=/${service.name}/${service.version}
+     #server.servlet.application-display-name=${project.artifactId}
+     #server.servlet.path=/
+     #server.servlet.context-path=/${service.name}/${service.version}
      
      ## Tomcat-specific server settings.
-     server.tomcat.accept-count=10
-     server.tomcat.max-connections=10
-     server.tomcat.max-threads=5 
+     #server.tomcat.accept-count=10
+     #server.tomcat.max-connections=10
+     #server.tomcat.max-threads=5 
      
      ## =========================================================
      ##              Spring Cloud config
@@ -42,53 +42,53 @@ objects:
      ## =========================================================
      management.server.address=0.0.0.0
      management.server.port=8081
-     management.endpoints.web.base-path=/actuator
-     management.endpoints.enabled=true
-     management.endpoints.web.exposure.include=*
-     management.metrics.export.prometheus.enabled=true
+     #management.endpoints.web.base-path=/actuator
+     #management.endpoints.enabled=true
+     #management.endpoints.web.exposure.include=*
+     #management.metrics.export.prometheus.enabled=true
      
      ## =========================================================
      ##              Hystrix
      ## =========================================================
-     hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=5000
-     hystrix.command.default.circuitBreaker.requestVolumeThreshold=5
-     hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=10000
-     hystrix.command.default.circuitBreaker.errorThresholdPercentage=50
+     #hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=5000
+     #hystrix.command.default.circuitBreaker.requestVolumeThreshold=5
+     #hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=10000
+     #hystrix.command.default.circuitBreaker.errorThresholdPercentage=50
      
      ## =========================================================
      ##              Zipkin
      ## =========================================================
-     spring.zipkin.base-url=http://zipkin:9411/
-     spring.sleuth.sampler.probability=1
+     #spring.zipkin.base-url=http://zipkin:9411/
+     #spring.sleuth.sampler.probability=1
      
      ## =========================================================
      ##              VPH Database
      ## =========================================================
      #spring.jpa.hibernate.ddl-auto=none
-     spring.datasource.url=jdbc:mysql://vph-mysql:3306/vph
-     spring.datasource.username=vph
-     spring.datasource.password=vph
+     #spring.datasource.url=jdbc:mysql://vph-mysql:3306/vph
+     #spring.datasource.username=vph
+     #spring.datasource.password=vph
      
      ## =========================================================
      ##              SFTP
      ## =========================================================
-     iamp.sftp.server=sierra-fs.westus2.cloudapp.azure.com
-     iamp.sftp.port=22
-     iamp.sftp.user=dwolfe
-     iamp.sftp.password=k7C!5KNg$p1umf
+     #iamp.sftp.server=sierra-fs.westus2.cloudapp.azure.com
+     #iamp.sftp.port=22
+     #iamp.sftp.user=dwolfe
+     #iamp.sftp.password=k7C!5KNg$p1umf
      #iamp.sftp.privateKey=
      #iamp.sftp.privateKeyPassphrase=
-     iamp.sftp.local.directory=/sftp/
-     iamp.sftp.remote.directory=/home/dwolfe/
+     #iamp.sftp.local.directory=/sftp/
+     #iamp.sftp.remote.directory=/home/dwolfe/
      
-     log4j.category.com.jcraft.jsch=DEBUG
+     #log4j.category.com.jcraft.jsch=DEBUG
      
      ## =========================================================
      ##              Endpoints
      ## =========================================================
-     endpoint.vph=http://rsi-vph:8080
-     endpoint.icbc.adapter=http://rsi-icbc-adapter:8080
-     endpoint.icbc=http://rsi-icbc:8080/icbc/v1/ws/createContravention
+     #endpoint.vph=http://rsi-vph:8080
+     #endpoint.icbc.adapter=http://rsi-icbc-adapter:8080
+     #endpoint.icbc=http://rsi-icbc:8080/icbc/v1/ws/createContravention
         
      ## =========================================================
      ##              Logging
@@ -113,3 +113,6 @@ objects:
              <appender-ref ref="STDOUT" />
          </root>
      </configuration>
+     bootstrap.properties: |-
+    	spring.cloud.config.uri = http://config-server-v1-1-0-0-snapshot:8080/config-server/v1
+     
