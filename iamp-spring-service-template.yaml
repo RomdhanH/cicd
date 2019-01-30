@@ -82,6 +82,11 @@ objects:
         - env:
            - name: JAVA_OPTIONS
              value: "${JAVA_OPTIONS}"
+           - name: SPRING_CLOUD_CONFIG_SERVER_SERVICE_TOKEN
+             valueFrom:
+               secretKeyRef:
+                 name: token-secret
+                 key: token
           capabilities: {}
           name: ${APP_NAME}-${API_VERSION}-${BUILD_VERSION}
           image: ${IMAGE_NAME}:${IMAGE_TAG}
