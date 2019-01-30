@@ -33,7 +33,6 @@ objects:
      ##              Spring Cloud config
      ## =========================================================
      spring.cloud.config.server.git.uri=https://github.com/RomdhanH/config-repository.git
-     spring.cloud.config.server.git.username=${SPRING_CLOUD_CONFIG_SERVER_SERVICE_TOKEN}
      spring.cloud.config.server.git.password=
      
      
